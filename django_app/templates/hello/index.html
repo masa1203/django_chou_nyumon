@@ -7,18 +7,20 @@
     <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'hello/css/style.css' %}" />
-    <script src="main.js"></script>
+    <!--<script src="main.js"></script>-->
 </head>
 <body>
     <h1>{{ title }}</h1>
-    <p>{{ result|safe }}</p>
+    <p>{{ data }}</p>
     <table>
-    <form action="{% url 'index' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <tr><td></td><td>
-        <input type="submit" value="click"></td></tr>    
-    </form>
+        <tr>
+            <th>data</th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{ item }}</td>
+        </tr>
+    {% endfor %}
     </table>
 </body>
 </html>
